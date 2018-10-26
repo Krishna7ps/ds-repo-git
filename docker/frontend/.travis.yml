@@ -5,7 +5,5 @@ services:
 before_install:
   - docker build -t krishna/travis-docker -d Dockerfile.dev .
 
-
 script:
   - docker run krishna/travis-docker:v1 npm run test -- --coverage
-'''
