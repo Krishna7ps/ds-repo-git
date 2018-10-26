@@ -1,4 +1,4 @@
-FROM node:alpine as builder
+FROM node:alpine as b
 WORKDIR '/app'
 COPY package.json .
 RUN npm install
@@ -10,6 +10,6 @@ RUN npm run build
 #serving static content
 
 FROM nginx
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=b /app/build /usr/share/nginx/html
 #CMD -- start nginx
 #Default command for nginx image is to start nginx for us, so no mentioning of CMD explicitly
