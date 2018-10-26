@@ -11,3 +11,10 @@ services:
     volumes: 
     - /app/node_modules
     - .:/app
+  testing:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volume:
+      - /app/node_modules
+      - .:/app
