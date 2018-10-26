@@ -7,4 +7,16 @@ before_install:
 
 #script should exit by itself, returning 0
 script:
-  - docker run krishna/travis-docker:v1 npm run test
+  - docker run krishna/travis-docker:v1 npm run test -- --coverage
+'''
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-763135806393"
+  #app name, bucket will be created after first deploy with app name. Use same for bucket_path  
+  bucket_path: "docker-react" 
+  on:
+    branch: master
+'''
